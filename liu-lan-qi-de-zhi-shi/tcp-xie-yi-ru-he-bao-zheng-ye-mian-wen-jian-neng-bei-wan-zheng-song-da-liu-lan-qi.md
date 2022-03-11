@@ -38,7 +38,7 @@ UDP 中一个最重要的信息是**端口号**，端口号其实就是一个**�
 * 数据包在传输过程中容易丢失；（<mark style="color:blue;">**丢包**</mark>）
 * 大文件会被拆分成很多小的数据包来传输，这些小的数据包会经过不同的路由，并在不同的时间到达接收端，而 UDP 协议并不知道如何组装这些数据包，从而把这些数据包还原成完整的文件。（<mark style="color:blue;">**乱序**</mark>）
 
-### 3. <mark style="color:blue;">****</mark> TCP：把数据完整地送达应用程序
+### <mark style="color:red;">3.</mark> <mark style="color:red;"></mark><mark style="color:red;"><mark style="color:blue;">****<mark style="color:blue;"></mark> <mark style="color:red;"></mark><mark style="color:red;">TCP：把数据完整地送达应用程序</mark>
 
 TCP（Transmission Control Protocol，传输控制协议）是一种<mark style="color:blue;">**面向连接的、可靠的、基于字节流**</mark>的传输层通信协议。
 
@@ -47,11 +47,11 @@ TCP（Transmission Control Protocol，传输控制协议）是一种<mark style=
 
 和 UDP 头一样，<mark style="color:blue;">**TCP 头除了包含了目标端口和本机端口号外，还提供了用于排序的序列号，以便接收端通过序号来重排数据包。**</mark>
 
-![](<../.gitbook/assets/image (79).png>)
+![](<../.gitbook/assets/image (81).png>)
 
 完整的 TCP 连接过程
 
-![](<../.gitbook/assets/image (81).png>)
+![](<../.gitbook/assets/image (83).png>)
 
 * 首先，建立连接阶段。这个阶段是通过“三次握手”来建立客户端和服务器之间的连接。TCP 提供面向连接的通信传输。面向连接是指在数据通信开始之前先做好两端之间的准备工作。所谓三次握手，是指在建立一个 TCP 连接时，客户端和服务器总共要发送三个数据包以确认连接的建立。
 * 其次，传输数据阶段。在该阶段，接收端需要对每个数据包进行确认操作，也就是<mark style="color:blue;">**接收端在接收到数据包之后，需要发送确认数据包给发送端。所以当发送端发送了一个数据包之后，在规定时间内没有接收到接收端反馈的确认消息，则判断为数据包丢失，并触发发送端的重发机制**</mark>。同样，一个大的文件在传输过程中会被拆分成很多小的数据包，这些数据包到达接收端后，接收端会按照 TCP 头中的序号为其排序，从而保证组成完整的数据。

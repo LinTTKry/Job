@@ -8,7 +8,7 @@ description: 在浏览器地址栏里键入极客时间网站的地址：http://
 
 ## 浏览器端发起 HTTP 请求流程
 
-![](<../.gitbook/assets/image (74).png>)
+<mark style="color:red;">**\*\*\*\*\***</mark>![](<../.gitbook/assets/image (74).png>)<mark style="color:red;">\*\*\*\*\*</mark>
 
 ### 1. 构建请求
 
@@ -96,7 +96,7 @@ If-None-Match:"4f80f-13c-3a1xb12a"
 
 ### 2. 登录状态是如何保持的？
 
-![](<../.gitbook/assets/image (80).png>)
+![](<../.gitbook/assets/image (82).png>)
 
 * 用户打开登录页面，在登录框里填入用户名和密码，点击确定按钮。点击按钮会触发页面脚本生成用户登录信息，然后调用 POST 方法提交用户登录信息给服务器。
 * 服务器接收到浏览器提交的信息之后，查询后台，验证用户登录信息是否正确，如果正确的话，会生成一段表示用户身份的字符串，并把该字符串写到响应头的 Set-Cookie 字段里，如下所示，然后把响应头发送给浏览器。

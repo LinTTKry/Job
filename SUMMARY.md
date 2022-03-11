@@ -108,6 +108,7 @@
 
 ## 浏览器 <a href="#liu-lan-qi-de-zhi-shi" id="liu-lan-qi-de-zhi-shi"></a>
 
+* [Chrome浏览器架构](liu-lan-qi-de-zhi-shi/chrome-liu-lan-qi-jia-gou.md)
 * [浏览器工作流程](liu-lan-qi-de-zhi-shi/liu-lan-qi-gong-zuo-liu-cheng.md)
 * [渲染流程：html、js、css如何变成页面](liu-lan-qi-de-zhi-shi/xuan-ran-liu-cheng-htmljscss-ru-he-bian-cheng-ye-mian.md)
 * [判断页面加载完毕](liu-lan-qi-de-zhi-shi/pan-duan-ye-mian-jia-zai-wan-bi.md)

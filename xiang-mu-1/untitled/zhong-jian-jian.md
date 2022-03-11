@@ -58,7 +58,7 @@ console.log('网站服务器启动成功');
 
 ## 应用级中间件
 
-&#x20;应用级中间键绑定到`app对象`使用`app.use`和`app.METHOD()-需要处理http请求的方法，例如GET、PUT、POST`
+应用级中间键绑定到`app对象`使用`app.use`和`app.METHOD()-需要处理http请求的方法，例如GET、PUT、POST`
 
 ```javascript
 var app = express()
@@ -220,7 +220,6 @@ function errorHandler(err,req,res,next){
     res.status(500)
     res.render('error',{error:err})
 }
-
 
 ```
 

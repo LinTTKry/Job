@@ -17,12 +17,12 @@
 * [\["1", "2", "3"\].map(parseInt)](js/1-2-3-.map-parseint.md)
 * [hashMap的底层原理](js/hashmap-de-di-ceng-yuan-li.md)
 * [ES6新增语法](js/es6-xin-zeng-yu-fa.md)
-* [typeof 与 instanceof的区别](js/typeof-yu-instanceof-de-qu-bie.md)
 * [严格模式](js/yan-ge-mo-shi.md)
 * [垃圾回收](js/la-ji-hui-shou.md)
 * [数组的常用方法及区别](js/shu-zu-de-chang-yong-fang-fa-ji-qu-bie.md)
 * [普通对象，Map, WeakMap, Set, WeakSet区别](js/pu-tong-dui-xiang-map-weakmap-set-weakset-qu-bie.md)
 * [this绑定方式](js/this-bang-ding-fang-shi.md)
+* [typeof 与 instanceof的区别](js/typeof-yu-instanceof-de-qu-bie.md)
 
 ## 面试编程
 
@@ -108,6 +108,7 @@
 
 ## 浏览器 <a href="#liu-lan-qi-de-zhi-shi" id="liu-lan-qi-de-zhi-shi"></a>
 
+* [浏览器工作流程](liu-lan-qi-de-zhi-shi/liu-lan-qi-gong-zuo-liu-cheng.md)
 * [渲染流程：html、js、css如何变成页面](liu-lan-qi-de-zhi-shi/xuan-ran-liu-cheng-htmljscss-ru-he-bian-cheng-ye-mian.md)
 * [判断页面加载完毕](liu-lan-qi-de-zhi-shi/pan-duan-ye-mian-jia-zai-wan-bi.md)
 * [缓存](liu-lan-qi-de-zhi-shi/huan-cun.md)

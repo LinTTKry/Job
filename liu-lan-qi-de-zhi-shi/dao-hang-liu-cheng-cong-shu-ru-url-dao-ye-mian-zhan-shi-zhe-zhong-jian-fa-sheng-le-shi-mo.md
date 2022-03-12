@@ -2,7 +2,7 @@
 
 ## <mark style="color:red;">​\*从输入 URL 到页面展示完整流程示意图</mark>
 
-![](<../.gitbook/assets/image (80).png>)
+![](<../.gitbook/assets/image (80) (1).png>)
 
 * 浏览器进程主要负责<mark style="color:blue;">**用户交互、子进程管理和文件储存**</mark>等功能。
 * 网络进程是面向渲染进程和浏览器进程等提供<mark style="color:blue;">**网络下载**</mark>功能。
@@ -55,7 +55,7 @@ Chrome 的默认策略是，<mark style="color:blue;">**每个标签对应一个
 
 其中，当渲染进程确认提交之后，更新内容如下图所示：
 
-![](<../.gitbook/assets/image (77).png>)
+![](<../.gitbook/assets/image (77) (1).png>)
 
 这也就解释了为什么在浏览器的地址栏里面输入了一个地址后，之前的页面没有立马消失，而是要加载一会儿才会更新页面。
 

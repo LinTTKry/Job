@@ -118,6 +118,7 @@
   * [变量提升：JavaScript代码是按顺序执行的吗？](liu-lan-qi-de-zhi-shi/liu-lan-qi-zhong-js-de-zhi-hang-ji-zhi/bian-liang-ti-sheng.md)
   * [调用栈：为什么JavaScript代码会出现栈溢出？](liu-lan-qi-de-zhi-shi/liu-lan-qi-zhong-js-de-zhi-hang-ji-zhi/tiao-yong-zhan-wei-shi-mo-javascript-dai-ma-hui-chu-xian-zhan-yi-chu.md)
   * [块级作用域：var缺陷以及为什么要引入let和const？](liu-lan-qi-de-zhi-shi/liu-lan-qi-zhong-js-de-zhi-hang-ji-zhi/kuai-ji-zuo-yong-yu-var-que-xian-yi-ji-wei-shi-mo-yao-yin-ru-let-he-const.md)
+  * [作用域链和闭包 ：代码中出现相同的变量，JavaScript引擎是如何选择的？](liu-lan-qi-de-zhi-shi/liu-lan-qi-zhong-js-de-zhi-hang-ji-zhi/zuo-yong-yu-lian-he-bi-bao-dai-ma-zhong-chu-xian-xiang-tong-de-bian-liang-javascript-yin-qing-shi-ru.md)
 * [判断页面加载完毕](liu-lan-qi-de-zhi-shi/pan-duan-ye-mian-jia-zai-wan-bi.md)
 * [缓存](liu-lan-qi-de-zhi-shi/huan-cun.md)
 * [输入url发生了什么？](liu-lan-qi-de-zhi-shi/shu-ru-url-fa-sheng-le-shen-me.md)

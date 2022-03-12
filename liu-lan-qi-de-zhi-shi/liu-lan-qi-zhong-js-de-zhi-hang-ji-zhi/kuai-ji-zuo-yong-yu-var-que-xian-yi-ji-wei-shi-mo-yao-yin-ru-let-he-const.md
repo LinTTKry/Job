@@ -115,3 +115,23 @@ foo()
 ![](<../../.gitbook/assets/image (63).png>)
 
 <mark style="color:red;">**块级作用域就是通过词法环境的栈结构来实现的，而变量提升是通过变量环境来实现，通过这两者的结合，JavaScript 引擎也就同时支持了变量提升和块级作用域了。**</mark>
+
+## 思考题
+
+```javascript
+let myname= '极客时间'
+{
+  console.log(myname) 
+  let myname= '极客邦'
+}
+```
+
+【最终打印结果】：VM6277:3 Uncaught ReferenceError: Cannot access 'myname' before initialization 【分析原因】：在块作用域内，<mark style="color:red;">**let声明的变量被提升，但变量只是创建被提升，初始化并没有被提升，在初始化之前使用变量，就会形成一个暂时性死区**</mark>。 (简单点，let定义的变量要在后面使用)
+
+【拓展】&#x20;
+
+<mark style="color:red;">**var的创建和初始化被提升，赋值不会被提升。**</mark>
+
+&#x20;<mark style="color:red;">**let的创建被提升，初始化和赋值不会被提升。**</mark>&#x20;
+
+<mark style="color:red;">**function的创建、初始化和赋值均会被提升。**</mark>

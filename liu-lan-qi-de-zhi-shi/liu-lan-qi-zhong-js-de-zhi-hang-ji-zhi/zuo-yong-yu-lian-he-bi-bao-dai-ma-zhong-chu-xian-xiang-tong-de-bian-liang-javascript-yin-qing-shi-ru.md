@@ -57,4 +57,29 @@ foo()
 
 现在是执行到 bar 函数的 if 语块之内，需要打印出来变量 test，那么就需要查找到 test 变量的值，其查找过程我已经在上图中使用序号 1、2、3、4、5 标记出来了。
 
-<mark style="color:red;">首先是在 bar 函数的执行上下文中查找，但因为 bar 函数的执行上下文中没有定义 test 变量，所以根据词法作用域的规则，下一步就在 bar 函数的外部作用域中查找，也就是全局作用域。</mark>
+<mark style="color:blue;">**首先是在 bar 函数的**</mark><mark style="color:red;">**执行上下文中**</mark><mark style="color:blue;">**查找，但因为 bar 函数的执行上下文中没有定义 test 变量，所以根据**</mark><mark style="color:red;">**词法作用域**</mark><mark style="color:blue;">**的规则，下一步就在 bar 函数的外部作用域中查找，也就是全局作用域。**</mark>
+
+## 闭包
+
+```javascript
+function foo() {
+    var myName = "极客时间"
+    let test1 = 1
+    const test2 = 2
+    var innerBar = {
+        getName:function(){
+            console.log(test1)
+            return myName
+        },
+        setName:function(newName){
+            myName = newName
+        }
+    }
+    return innerBar
+}
+var bar = foo()
+bar.setName("极客邦")
+bar.getName()
+console.log(bar.getName())
+```
+

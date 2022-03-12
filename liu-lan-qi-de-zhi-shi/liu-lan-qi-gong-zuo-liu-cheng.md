@@ -3,14 +3,14 @@
 ## 用户输入
 
 1. 用户在地址栏按下回车，检查输入（关键字 or 符合 URL 规则），组装完整 URL；
-2. 回车前，当前页面执行 onbeforeunload 事件；
+2. 回车前，当前页面执行 onbeforeunload 事件；（允许页面在退出之前执行一些数据清理操作，还可以询问用户是否要离开当前页面，比如当前页面可能有未提交完成的表单等情况）
 3. 浏览器进入加载状态。
 
 ## URL 请求
 
 1. 浏览器进程通过 IPC 把 URL 请求发送至网络进程；
 2. 查找资源缓存（有效期内）；
-3. 准备IP地址和端口——DNS 解析（查询 DNS 缓存）；
+3. <mark style="color:blue;">**准备IP地址和端口——DNS （domain name system）解析**</mark>（<mark style="color:blue;">**解析URL中域名对应的IP地址**</mark>）；
 4. 进入 TCP 队列（单个域名 TCP 连接数量限制）；
 5. 创建 TCP 连接（三次握手）；
 6. HTTPS 建立 TLS 连接（client hello, server hello, pre-master key 生成『对话密钥』）；
@@ -21,15 +21,15 @@
 
 ## 准备渲染进程
 
-1. 根据是否同一站点（相同的协议和根域名），决定是否复用渲染进程。
+1. 根据是否<mark style="color:blue;">**同一站点（相同的协议和根域名）**</mark>，决定是否复用渲染进程。
 
-## 提交文档
+## <mark style="color:red;">**提交文档**</mark>
 
-1. 浏览器进程接受到网路进程的响应头数据，向渲染进程发送『提交文档』消息；
-2. 渲染进程收到『提交文档』消息后，与网络进程建立传输数据『管道』；
-3. 传输完成后，渲染进程返回『确认提交』消息给浏览器进程；
-4. 浏览器接受『确认提交』消息后，移除旧文档、更新界面、地址栏，导航历史状态等；
-5. 此时标识浏览器加载状态的小圆圈，从此前 URL 网络请求时的逆时针选择，即将变成顺时针旋转（进入渲染阶段）。
+1. 浏览器进程<mark style="color:red;">**接受到网路进程的响应头数据**</mark>，<mark style="color:blue;">**向渲染进程发送『**</mark><mark style="color:red;">**提交文档』**</mark><mark style="color:blue;">**消息**</mark>；
+2. 渲染进程收到『提交文档』消息后，<mark style="color:red;">**与网络进程建立传输数据『管道』**</mark>；
+3. 传输完成后，渲染进程返回<mark style="color:blue;">**『**</mark><mark style="color:red;">**确认提交』**</mark><mark style="color:blue;">**消息给浏览器进程**</mark>；
+4. 浏览器<mark style="color:red;">**接受『确认提交』消息后，移除旧文档、更新界面、地址栏，导航历史状态**</mark>等；
+5. 此时标<mark style="color:blue;">**识浏览器加载状态的小圆圈**</mark>，从<mark style="color:blue;">**此前 URL 网络请求时的**</mark><mark style="color:red;">**逆时针**</mark>选择，即将变成<mark style="color:red;">**顺时针旋转**</mark>（进入渲染阶段）。
 
 ## 渲染
 

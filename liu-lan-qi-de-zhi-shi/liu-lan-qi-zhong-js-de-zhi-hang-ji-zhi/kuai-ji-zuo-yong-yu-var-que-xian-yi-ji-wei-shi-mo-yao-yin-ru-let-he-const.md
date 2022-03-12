@@ -126,7 +126,7 @@ let myname= '极客时间'
 }
 ```
 
-【最终打印结果】：VM6277:3 Uncaught ReferenceError: Cannot access 'myname' before initialization 【分析原因】：在块作用域内，<mark style="color:red;">**let声明的变量被提升，但变量只是创建被提升，初始化并没有被提升，在初始化之前使用变量，就会形成一个暂时性死区**</mark>。 (简单点，let定义的变量要在后面使用)
+【最终打印结果】：VM6277:3 Uncaught ReferenceError: Cannot access 'myname' before initialization 【分析原因】：在块作用域内，<mark style="color:red;">**let声明的变量被提升，但变量只是创建被提升，初始化并没有被提升，在初始化之前使用变量，就会形成一个暂时性死区**</mark>。
 
 【拓展】&#x20;
 
@@ -134,4 +134,4 @@ let myname= '极客时间'
 
 &#x20;<mark style="color:red;">**let的创建被提升，初始化和赋值不会被提升。**</mark>&#x20;
 
-<mark style="color:red;">**function的创建、初始化和赋值均会被提升。**</mark>
+<mark style="color:red;">**function的创建、初始化和赋值均会被提升。**</mark> (简单点，let/ const不存在变量提升)

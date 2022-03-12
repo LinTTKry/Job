@@ -97,4 +97,42 @@ innerBar 是一个对象，包含了 getName 和 setName 的两个方法（通�
 
 <mark style="color:blue;">**之所以是专属背包，是因为除了 setName 和 getName 函数之外，其他任何地方都是无法访问该背包的，我们就可以把这个背包称为 foo 函数的闭包。**</mark>
 
-在 JavaScript 中，根据词法作用域的规则，内部函数总是可以访问其外部函数中声明的变量，当通过调用一个外部函数返回一个内部函数后，即使该外部函数已经执行结束了，但是内部函数引用外部函数的变量依然保存在内存中，我们就把这些变量的集合称为闭包。比如外部函数是 foo，那么这些变量的集合就称为 foo 函数的闭包。
+<mark style="color:red;">**在 JavaScript 中，根据词法作用域的规则，内部函数总是可以访问其外部函数中声明的变量，当通过调用一个外部函数返回一个内部函数后，即使该外部函数已经执行结束了，但是内部函数引用外部函数的变量依然保存在内存中，我们就把这些变量的集合称为闭包。比如外部函数是 foo，那么这些变量的集合就称为 foo 函数的闭包。**</mark>
+
+当执行到 bar.setName 方法中的myName = "极客邦"这句代码时，JavaScript 引擎会沿着“当前执行上下文–>foo 函数闭包–> 全局执行上下文”的顺序来查找 myName 变量，调用栈状态图：
+
+![](<../../.gitbook/assets/image (81).png>)
+
+setName 的执行上下文中没有 myName 变量，foo 函数的闭包中包含了变量 myName，所以调用 setName 时，会修改 foo 闭包中的 myName 变量的值。同样的流程，当调用 bar.getName 的时候，所访问的变量 myName 也是位于 foo 函数闭包中的。
+
+![](<../../.gitbook/assets/image (87).png>)
+
+当调用 bar.getName 的时候，右边 <mark style="color:blue;">**Scope 项**</mark>就体现出了作用域链的情况：Local 就是当前的 getName 函数的作用域，<mark style="color:red;">**Closure(foo) 是指 foo 函数的闭包**</mark>，最下面的 Global 就是指全局作用域，从“<mark style="color:red;">**Local–>Closure(foo)–>Global**</mark>”就是一个完整的作用域链。
+
+## 闭包是怎么回收的
+
+<mark style="color:blue;">**通常，如果引用闭包的函数是一个全局变量，那么闭包会一直存在直到页面关闭；但如果这个闭包以后不再使用的话，就会造成内存泄漏。**</mark>
+
+如果引用闭包的函数是个局部变量，等函数销毁后，在下次 JavaScript 引擎执行垃圾回收时，判断闭包这块内容如果已经不再被使用了，那么 JavaScript 引擎的垃圾回收器就会回收这块内存。
+
+尽量注意一个原则：如果该闭包会一直使用，那么它可以作为全局变量而存在；但如果使用频率不高，而且占用内存又比较大的话，那就尽量让它成为一个局部变量。
+
+## 思考时间
+
+```javascript
+var bar = {
+    myName:"time.geekbang.com",
+    printName: function () {
+        console.log(myName)
+    }    
+}
+function foo() {
+    let myName = "极客时间"
+    return bar.printName// 当前词法->当前变量->outer全局词法-outer全局变量找到bar
+}
+let myName = "极客邦"
+let _printName = foo()
+_printName() //极客邦// 压方法的执行上下入调用栈 // 找当前词法环境（没有）->查找当前变量环境（没有） -> 查找outer全局词法环境（找到了）
+bar.printName()//极客邦//当前词法环境（没有）->查找当前变量环境（没有） -> 查找outer全局词法环境（找到了）
+```
+

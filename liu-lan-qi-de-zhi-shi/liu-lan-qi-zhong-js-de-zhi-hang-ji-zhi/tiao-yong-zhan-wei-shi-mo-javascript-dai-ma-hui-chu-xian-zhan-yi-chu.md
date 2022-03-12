@@ -69,7 +69,7 @@ addAll(3,6)
 
 你可以打开“开发者工具”，点击“<mark style="color:blue;">**Source**</mark>”标签，选择<mark style="color:blue;">**js代码**</mark>的页面，然后在第 3 行加上<mark style="color:blue;">**断点**</mark>，并<mark style="color:blue;">**刷新页面**</mark>。你可以看到执行到 add 函数时，执行流程就暂停了，这时可以通过右边“<mark style="color:blue;">**call stack**</mark>”来查看当前的调用栈的情况，如下图：
 
-![](<../../.gitbook/assets/image (81).png>)
+![](<../../.gitbook/assets/image (81) (1).png>)
 
 从图中可以看出，右边的“call stack”下面显示出来了函数的调用关系：栈的最底部是 a<mark style="color:blue;">**nonymous，也就是全局的函数入口**</mark>；中间是 addAll 函数；顶部是 add 函数。这就清晰地反映了函数的调用关系，所以在分析复杂结构代码，或者检查 Bug 时，调用栈都是非常有用的。除了通过断点来查看调用栈，你还可以使用 console.trace() 来输出当前的函数调用关系，比如在示例代码中的 add 函数里面加上了console.trace()，你就可以看到控制台输出的结果：
 

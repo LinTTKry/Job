@@ -47,7 +47,7 @@ TCP（Transmission Control Protocol，传输控制协议）是一种<mark style=
 
 和 UDP 头一样，<mark style="color:blue;">**TCP 头除了包含了目标端口和本机端口号外，还提供了用于排序的序列号，以便接收端通过序号来重排数据包。**</mark>
 
-![](<../.gitbook/assets/image (81) (1) (1).png>)
+![](<../.gitbook/assets/image (81) (1) (1) (1).png>)
 
 完整的 TCP 连接过程
 

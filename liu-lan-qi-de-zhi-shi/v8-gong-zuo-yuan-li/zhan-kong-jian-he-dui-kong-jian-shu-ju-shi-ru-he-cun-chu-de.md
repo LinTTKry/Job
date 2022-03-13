@@ -88,3 +88,33 @@ console.log(bar.getName())
 从上图你可以清晰地看出，<mark style="color:red;">**当执行到 foo 函数时，闭包就产生了；当 foo 函数执行结束之后，返回的 getName 和 setName 方法都引用“closure(foo)”对象，所以即使 foo 函数退出了，“ closure(foo)”依然被其内部的 getName 和 setName 方法引用**</mark>。所以在下次调用bar.setName或者bar.getName时，创建的执行上下文中就包含了“closure(foo)”。
 
 产生闭包的核心有两步：<mark style="color:red;">**第一步是需要预扫描内部函数；第二步是把内部函数引用的外部变量保存到堆中。**</mark>
+
+## 浅拷贝与深拷贝
+
+
+
+* JSON.parse(JSON.stringify(...))
+
+```javascript
+function copy(src){ 
+    let dest; 
+    dest = JSON.parse(JSON.stringify(src)); 
+    return dest; 
+}
+```
+
+&#x20;缺点：无法拷贝函数
+
+* Object.assign({}, source)
+
+```
+function copy(src){ 
+    let dest; 
+    dest = Object.assign({}, src); 
+    return dest;
+} 
+```
+
+缺点：只能拷贝一层
+
+* 递归遍历对象（见deepclone）

@@ -17,7 +17,7 @@ function add(){
 add()
 ```
 
-![](<../../.gitbook/assets/image (58).png>)
+![](<../../../.gitbook/assets/image (58).png>)
 
 <mark style="color:blue;">**执行上下文准备好之后，便开始执行全局代码，当执行到 add 这儿时，JavaScript 判断这是一个函数调用，那么将执行以下操作**</mark>：
 
@@ -25,7 +25,7 @@ add()
 * 其次，<mark style="color:blue;">**对 add 函数的这段代码进行编译，并创建该函数的执行上下文和可执行代码**</mark>。
 * 最后，执行代码，输出结果。
 
-![](<../../.gitbook/assets/image (69).png>)
+![](<../../../.gitbook/assets/image (69).png>)
 
 当执行到 add 函数的时候，我们就有了两个执行上下文了——<mark style="color:blue;">**全局执行上下文和 add 函数的执行上下文**</mark>。也就是说在执行 JavaScript 时，可能会存在多个执行上下文，那么 <mark style="color:blue;">**JavaScript 引擎是通过一种叫栈（后进先出）的数据结构来管理的管理这些执行上下文的**</mark>。
 
@@ -48,20 +48,20 @@ addAll(3,6)
 
 * 创建全局上下文，并将其压入栈底，执行a=2
 
-![](<../../.gitbook/assets/image (75).png>)![](<../../.gitbook/assets/image (76).png>)
+![](<../../../.gitbook/assets/image (75).png>)![](<../../../.gitbook/assets/image (76).png>)
 
 * 调用 addAll 函数，同样会为其创建执行上下文，并执行d=10
 
-![](<../../.gitbook/assets/image (88).png>)
+![](<../../../.gitbook/assets/image (88).png>)
 
-* 执行到 add 函数调用语句时，同样会为其创建执行上下文，并将其压入调用栈![](<../../.gitbook/assets/image (84).png>)
+* 执行到 add 函数调用语句时，同样会为其创建执行上下文，并将其压入调用栈![](<../../../.gitbook/assets/image (84).png>)
 * 当 add 函数返回时，该函数的执行上下文就会从栈顶弹出，并将 result 的值设置为 add 函数的返回值，也就是 9。如下图所示：
 
-![](<../../.gitbook/assets/image (66) (1).png>)
+![](<../../../.gitbook/assets/image (66) (1).png>)
 
 * 紧接着 addAll 执行最后一个相加操作后并返回，addAll 的执行上下文也会从栈顶部弹出，此时调用栈中就只剩下全局上下文了。最终如下图所示：
 
-![](<../../.gitbook/assets/image (71).png>)
+![](<../../../.gitbook/assets/image (71).png>)
 
 
 
@@ -69,11 +69,11 @@ addAll(3,6)
 
 你可以打开“开发者工具”，点击“<mark style="color:blue;">**Source**</mark>”标签，选择<mark style="color:blue;">**js代码**</mark>的页面，然后在第 3 行加上<mark style="color:blue;">**断点**</mark>，并<mark style="color:blue;">**刷新页面**</mark>。你可以看到执行到 add 函数时，执行流程就暂停了，这时可以通过右边“<mark style="color:blue;">**call stack**</mark>”来查看当前的调用栈的情况，如下图：
 
-![](<../../.gitbook/assets/image (81) (1).png>)
+![](<../../../.gitbook/assets/image (81) (1).png>)
 
 从图中可以看出，右边的“call stack”下面显示出来了函数的调用关系：栈的最底部是 a<mark style="color:blue;">**nonymous，也就是全局的函数入口**</mark>；中间是 addAll 函数；顶部是 add 函数。这就清晰地反映了函数的调用关系，所以在分析复杂结构代码，或者检查 Bug 时，调用栈都是非常有用的。除了通过断点来查看调用栈，你还可以使用 console.trace() 来输出当前的函数调用关系，比如在示例代码中的 add 函数里面加上了console.trace()，你就可以看到控制台输出的结果：
 
-![](<../../.gitbook/assets/image (67) (1).png>)
+![](<../../../.gitbook/assets/image (67) (1).png>)
 
 ## 栈溢出
 

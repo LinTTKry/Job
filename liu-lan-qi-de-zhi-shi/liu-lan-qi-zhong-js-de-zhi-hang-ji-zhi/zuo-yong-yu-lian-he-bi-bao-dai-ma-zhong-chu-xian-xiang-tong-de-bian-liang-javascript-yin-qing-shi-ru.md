@@ -16,7 +16,7 @@ var myName = "极客时间"
 foo()
 ```
 
-上面那段代码<mark style="color:blue;">**在查找 myName 变量时，如果在当前的变量环境中没有查找到，那么 JavaScript 引擎会继续在 outer 所指向的执行上下文中查找**</mark>。为了直观理解，你可以看下面这张图：![](<../../.gitbook/assets/image (85).png>)
+上面那段代码<mark style="color:blue;">**在查找 myName 变量时，如果在当前的变量环境中没有查找到，那么 JavaScript 引擎会继续在 outer 所指向的执行上下文中查找**</mark>。为了直观理解，你可以看下面这张图：![](<../../.gitbook/assets/image (85) (1).png>)
 
 bar 函数和 foo 函数的 outer 都是指向全局上下文的，这也就意味着如果在 bar 函数或者 foo 函数中使用了外部变量，那么 JavaScript 引擎会去全局执行上下文中查找。我们把这个查找的链条就称为作用域链。（<mark style="color:red;">**为什么bar的outer指向的是全局？因为词法作用域**</mark>）
 

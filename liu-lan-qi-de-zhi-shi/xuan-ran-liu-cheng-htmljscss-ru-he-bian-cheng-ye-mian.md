@@ -48,7 +48,7 @@ document.getElementsByTagName("p")[0].innerText = "black"
 
 * [ ] 把 CSS 转换为浏览器能够理解的结构
 
-![](<../.gitbook/assets/image (63) (1) (1).png>)
+![](<../.gitbook/assets/image (63) (1) (1) (1).png>)
 
 和 HTML 文件一样，浏览器也是无法直接理解这些纯文本的 CSS 样式，所以当渲染引擎接收到 CSS 文本时，会执行一个转换操作，将 CSS 文本转换为浏览器可以理解的结构——styleSheets。为了加深理解，你可以在 Chrome 控制台中查看其结构，只需要在控制台中输入 document.styleSheets，然后就看到如下图所示的结构：
 
@@ -167,7 +167,7 @@ DOM 树中所有不可见的节点都没有包含到布局树中。为了构建�
 
 在有些情况下，有的图层可以很大，比如有的页面你使用滚动条要滚动好久才能滚动到底部，但是通过视口，用户只能看到页面的很小一部分，所以在这种情况下，要<mark style="color:blue;">**绘制出所有图层内容的话，就会产生太大的开销，而且也没有必要**</mark>。基于这个原因，<mark style="color:blue;">**合成线程会将图层划分为图块（tile）**</mark>，这些图块的大小通常是 256x256 或者 512x512，如下图所示：
 
-![](<../.gitbook/assets/image (63) (1).png>)
+![](<../.gitbook/assets/image (63) (1) (1).png>)
 
 然后合成线程会按照<mark style="color:blue;">**视口附近的图块来优先生成位图**</mark>，实际生成位图的操作是由栅格化来执行的。<mark style="color:blue;">**所谓栅格化，是指将图块转换为位图**</mark>。而图块是栅格化执行的最小单位。<mark style="color:blue;">**渲染进程维护了一个栅格化的线程池，所有的图块栅格化都是在线程池内执行的**</mark>，运行方式如下图所示：
 

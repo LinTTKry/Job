@@ -6,7 +6,7 @@
 
 C 编译器会把 int 型的变量悄悄转换为 bool 型的变量，我们通常把这种偷偷转换的操作称为隐式类型转换。而<mark style="color:blue;">**支持隐式类型转换的语言称为弱类型语言**</mark>，不支持隐式类型转换的语言称为强类型语言。
 
-![](<../../.gitbook/assets/image (88).png>)
+![](<../../.gitbook/assets/image (88) (1).png>)
 
 <mark style="color:red;">**JavaScript 是一种弱类型的、动态的语言。**</mark>
 

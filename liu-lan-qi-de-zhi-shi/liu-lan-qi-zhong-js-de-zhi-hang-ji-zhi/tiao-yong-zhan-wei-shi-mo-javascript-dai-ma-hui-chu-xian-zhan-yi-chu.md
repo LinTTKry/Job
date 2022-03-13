@@ -52,7 +52,7 @@ addAll(3,6)
 
 * 调用 addAll 函数，同样会为其创建执行上下文，并执行d=10
 
-![](<../../.gitbook/assets/image (88) (1).png>)
+![](<../../.gitbook/assets/image (88) (1) (1).png>)
 
 * 执行到 add 函数调用语句时，同样会为其创建执行上下文，并将其压入调用栈![](<../../.gitbook/assets/image (84).png>)
 * 当 add 函数返回时，该函数的执行上下文就会从栈顶弹出，并将 result 的值设置为 add 函数的返回值，也就是 9。如下图所示：

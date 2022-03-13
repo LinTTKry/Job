@@ -98,4 +98,4 @@ console.log(window.name)
 
 * 普通函数中的 this 默认指向全局对象 window
 
-在<mark style="color:blue;">默认情况下调用一个函数，其执行上下文中的 this 是默认指向全局对象 window 的</mark>。不过这个设计也是一种缺陷，因为在实际工作中，我们并不希望函数执行上下文中的 this 默认指向全局对象，<mark style="color:blue;">因为这样会打破数据的边界，造成一些误操作</mark>。如果要让函数执行上下文中的 this 指向某个对象，最好的方式是通过 call 方法来显示调用。这个问题可以通过设置 JavaScript 的“严格模式”来解决。<mark style="color:blue;">在严格模式下，默认执行一个函数，其函数的执行上下文中的 this 值是 undefined，这就解决上面的问题了</mark>
+在<mark style="color:blue;">**默认情况下调用一个函数，其执行上下文中的 this 是默认指向全局对象 window 的**</mark>**。**不过这个设计也是一种缺陷，因为在实际工作中，我们并不希望函数执行上下文中的 this 默认指向全局对象，<mark style="color:blue;">**因为这样会打破数据的边界，造成一些误操作**</mark>**。**如果要让函数执行上下文中的 this 指向某个对象，最好的方式是通过 call 方法来显示调用。这个问题可以通过设置 JavaScript 的“严格模式”来解决。<mark style="color:blue;">**在严格模式下，默认执行一个函数，其函数的执行上下文中的 this 值是 undefined，这就解决上面的问题了。**</mark>

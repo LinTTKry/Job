@@ -85,7 +85,7 @@ console.log(bar.getName())
 
 我们看看当执行到 foo 函数内部的return innerBar这行代码时调用栈的情况：
 
-![](<../../.gitbook/assets/image (78).png>)
+![](<../../.gitbook/assets/image (78) (1).png>)
 
 innerBar 是一个对象，包含了 getName 和 setName 的两个方法（通常我们把对象内部的函数称为方法）。你可以看到，<mark style="color:blue;">**这两个方法都是在 foo 函数内部定义的，并且这两个方法内部都使用了 myName 和 test1 两个变量。**</mark>
 

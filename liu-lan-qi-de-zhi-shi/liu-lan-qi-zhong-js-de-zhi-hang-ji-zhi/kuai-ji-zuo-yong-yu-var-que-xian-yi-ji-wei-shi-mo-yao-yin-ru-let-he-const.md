@@ -108,11 +108,11 @@ foo()
 
 当执行到作用域块中的console.log(a)这行代码时，就需要在词法环境和变量环境中查找变量 a 的值了，具体查找方式是：<mark style="color:red;">**沿着词法环境的栈顶向下查询，如果在词法环境中的某个块中查找到了，就直接返回给 JavaScript 引擎，如果没有查找到，那么继续在变量环境中查找。**</mark>
 
-<mark style="color:red;">****</mark>![](<../../.gitbook/assets/image (73).png>)<mark style="color:red;">****</mark>
+<mark style="color:red;">****</mark>![](<../../.gitbook/assets/image (73) (1).png>)<mark style="color:red;">****</mark>
 
 当作用域块执行结束之后，其内部定义的变量就会从词法环境的栈顶弹出，最终执行上下文如下图所示：
 
-![](<../../.gitbook/assets/image (63) (1).png>)
+![](<../../.gitbook/assets/image (63) (1) (1).png>)
 
 <mark style="color:red;">**块级作用域就是通过词法环境的栈结构来实现的，而变量提升是通过变量环境来实现，通过这两者的结合，JavaScript 引擎也就同时支持了变量提升和块级作用域了。**</mark>
 

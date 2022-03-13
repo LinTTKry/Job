@@ -25,7 +25,7 @@ add()
 * 其次，<mark style="color:blue;">**对 add 函数的这段代码进行编译，并创建该函数的执行上下文和可执行代码**</mark>。
 * 最后，执行代码，输出结果。
 
-![](<../../.gitbook/assets/image (69).png>)
+![](<../../.gitbook/assets/image (69) (1).png>)
 
 当执行到 add 函数的时候，我们就有了两个执行上下文了——<mark style="color:blue;">**全局执行上下文和 add 函数的执行上下文**</mark>。也就是说在执行 JavaScript 时，可能会存在多个执行上下文，那么 <mark style="color:blue;">**JavaScript 引擎是通过一种叫栈（后进先出）的数据结构来管理的管理这些执行上下文的**</mark>。
 
@@ -57,7 +57,7 @@ addAll(3,6)
 * 执行到 add 函数调用语句时，同样会为其创建执行上下文，并将其压入调用栈![](<../../.gitbook/assets/image (84).png>)
 * 当 add 函数返回时，该函数的执行上下文就会从栈顶弹出，并将 result 的值设置为 add 函数的返回值，也就是 9。如下图所示：
 
-![](<../../.gitbook/assets/image (66) (1).png>)
+![](<../../.gitbook/assets/image (66) (1) (1).png>)
 
 * 紧接着 addAll 执行最后一个相加操作后并返回，addAll 的执行上下文也会从栈顶部弹出，此时调用栈中就只剩下全局上下文了。最终如下图所示：
 

@@ -75,7 +75,7 @@ Chrome 有个机制，同一个域名同时最多只能建立 6 个 TCP 连接�
 
 浏览器资源缓存(强缓存与弱缓存)
 
-![](<../.gitbook/assets/image (69) (1).png>)
+![](<../.gitbook/assets/image (69) (1) (1).png>)
 
 从上图的第一次请求可以看出，当服务器返回 HTTP 响应头给浏览器时，浏览器是通过<mark style="color:blue;">**响应头中的 Cache-Control**</mark> 字段来设置是否缓存该资源。通常，我们还需要为这个资源设置一个缓存过期时长，而这个时长是通过 <mark style="color:blue;">**Cache-Control 中的 Max-age 参数**</mark>来设置的，比如上图设置的<mark style="color:blue;">**缓存过期时间**</mark>是 2000 秒。
 
@@ -96,7 +96,7 @@ If-None-Match:"4f80f-13c-3a1xb12a"
 
 ### 2. 登录状态是如何保持的？
 
-![](<../.gitbook/assets/image (82) (1) (1).png>)
+![](<../.gitbook/assets/image (82) (1) (1) (1).png>)
 
 * 用户打开登录页面，在登录框里填入用户名和密码，点击确定按钮。点击按钮会触发页面脚本生成用户登录信息，然后调用 POST 方法提交用户登录信息给服务器。
 * 服务器接收到浏览器提交的信息之后，查询后台，验证用户登录信息是否正确，如果正确的话，会生成一段表示用户身份的字符串，并把该字符串写到响应头的 Set-Cookie 字段里，如下所示，然后把响应头发送给浏览器。

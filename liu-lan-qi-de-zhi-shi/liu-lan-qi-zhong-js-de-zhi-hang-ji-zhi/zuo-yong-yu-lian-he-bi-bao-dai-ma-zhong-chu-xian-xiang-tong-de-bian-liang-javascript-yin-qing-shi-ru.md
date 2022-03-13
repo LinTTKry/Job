@@ -24,7 +24,7 @@ bar 函数和 foo 函数的 outer 都是指向全局上下文的，这也就意�
 
 词法作用域就是指作用域是<mark style="color:red;">**由代码中函数声明的位置**</mark>来决定的，所以<mark style="color:red;">**词法作用域是静态的作用域**</mark>，通过它就能够预测代码在执行过程中如何查找标识符。
 
-![](<../../.gitbook/assets/image (82).png>)
+![](<../../.gitbook/assets/image (82) (1).png>)
 
 <mark style="color:blue;">**因为 JavaScript 作用域链是由词法作用域决定的，所以整个词法作用域链的顺序是：foo 函数作用域—>bar 函数作用域—>main 函数作用域—> 全局作用。**</mark>
 
@@ -91,7 +91,7 @@ innerBar 是一个对象，包含了 getName 和 setName 的两个方法（通�
 
 <mark style="color:blue;">**根据词法作用域的规则，内部函数 getName 和 setName 总是可以访问它们的外部函数 foo 中的变量**</mark><mark style="color:blue;">，</mark><mark style="color:blue;">**所以当 innerBar 对象返回给全局变量 bar 时，虽然 foo 函数已经执行结束，但是 getName 和 setName 函数依然可以使用 foo 函数中的变量 myName 和 test1**</mark>。所以当 foo 函数执行完成之后，其整个调用栈的状态如下图所示：
 
-![](<../../.gitbook/assets/image (66).png>)
+![](<../../.gitbook/assets/image (66) (1).png>)
 
 从上图可以看出，foo 函数执行完成之后，其执行上下文从栈顶弹出了，但是由于返回的 setName 和 getName 方法中使用了 foo 函数内部的变量 myName 和 test1，所以这两个变量依然保存在内存中。这像极了 setName 和 getName 方法背的一个专属背包，无论在哪里调用了 setName 和 getName 方法，它们都会背着这个 foo 函数的专属背包。
 

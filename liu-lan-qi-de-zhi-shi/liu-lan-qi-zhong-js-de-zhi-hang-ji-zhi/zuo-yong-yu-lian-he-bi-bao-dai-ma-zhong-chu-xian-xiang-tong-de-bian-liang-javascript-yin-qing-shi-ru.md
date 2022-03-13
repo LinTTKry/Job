@@ -105,7 +105,7 @@ innerBar 是一个对象，包含了 getName 和 setName 的两个方法（通�
 
 setName 的执行上下文中没有 myName 变量，foo 函数的闭包中包含了变量 myName，所以调用 setName 时，会修改 foo 闭包中的 myName 变量的值。同样的流程，当调用 bar.getName 的时候，所访问的变量 myName 也是位于 foo 函数闭包中的。
 
-![](<../../.gitbook/assets/image (87).png>)
+![](<../../.gitbook/assets/image (87) (1).png>)
 
 当调用 bar.getName 的时候，右边 <mark style="color:blue;">**Scope 项**</mark>就体现出了作用域链的情况：Local 就是当前的 getName 函数的作用域，<mark style="color:red;">**Closure(foo) 是指 foo 函数的闭包**</mark>，最下面的 Global 就是指全局作用域，从“<mark style="color:red;">**Local–>Closure(foo)–>Global**</mark>”就是一个完整的作用域链。
 

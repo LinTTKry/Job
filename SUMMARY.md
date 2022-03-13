@@ -124,6 +124,7 @@
 * [V8工作原理](liu-lan-qi-de-zhi-shi/v8-gong-zuo-yuan-li/README.md)
   * [栈空间和堆空间：数据是如何存储的？](liu-lan-qi-de-zhi-shi/v8-gong-zuo-yuan-li/zhan-kong-jian-he-dui-kong-jian-shu-ju-shi-ru-he-cun-chu-de.md)
   * [垃圾回收：垃圾数据是如何自动回收的？](liu-lan-qi-de-zhi-shi/v8-gong-zuo-yuan-li/la-ji-hui-shou-la-ji-shu-ju-shi-ru-he-zi-dong-hui-shou-de.md)
+  * [编译器和解释器：V8是如何执行一段JavaScript代码的？](liu-lan-qi-de-zhi-shi/v8-gong-zuo-yuan-li/bian-yi-qi-he-jie-shi-qi-v8-shi-ru-he-zhi-hang-yi-duan-javascript-dai-ma-de.md)
 * [判断页面加载完毕](liu-lan-qi-de-zhi-shi/pan-duan-ye-mian-jia-zai-wan-bi.md)
 * [缓存](liu-lan-qi-de-zhi-shi/huan-cun.md)
 * [输入url发生了什么？](liu-lan-qi-de-zhi-shi/shu-ru-url-fa-sheng-le-shen-me.md)

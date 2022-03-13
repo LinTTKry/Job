@@ -53,7 +53,7 @@ let test = 1
 foo()
 ```
 
-​![](<../../.gitbook/assets/image (67).png>)
+​![](<../../.gitbook/assets/image (67) (1).png>)
 
 现在是执行到 bar 函数的 if 语块之内，需要打印出来变量 test，那么就需要查找到 test 变量的值，其查找过程我已经在上图中使用序号 1、2、3、4、5 标记出来了。
 

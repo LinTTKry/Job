@@ -54,7 +54,7 @@ addAll(3,6)
 
 ![](<../../.gitbook/assets/image (88) (1) (1).png>)
 
-* 执行到 add 函数调用语句时，同样会为其创建执行上下文，并将其压入调用栈![](<../../.gitbook/assets/image (84).png>)
+* 执行到 add 函数调用语句时，同样会为其创建执行上下文，并将其压入调用栈![](<../../.gitbook/assets/image (84) (1).png>)
 * 当 add 函数返回时，该函数的执行上下文就会从栈顶弹出，并将 result 的值设置为 add 函数的返回值，也就是 9。如下图所示：
 
 ![](<../../.gitbook/assets/image (66) (1) (1).png>)
@@ -73,7 +73,7 @@ addAll(3,6)
 
 从图中可以看出，右边的“call stack”下面显示出来了函数的调用关系：栈的最底部是 a<mark style="color:blue;">**nonymous，也就是全局的函数入口**</mark>；中间是 addAll 函数；顶部是 add 函数。这就清晰地反映了函数的调用关系，所以在分析复杂结构代码，或者检查 Bug 时，调用栈都是非常有用的。除了通过断点来查看调用栈，你还可以使用 console.trace() 来输出当前的函数调用关系，比如在示例代码中的 add 函数里面加上了console.trace()，你就可以看到控制台输出的结果：
 
-![](<../../.gitbook/assets/image (67) (1).png>)
+![](<../../.gitbook/assets/image (67) (1) (1).png>)
 
 ## 栈溢出
 

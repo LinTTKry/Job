@@ -86,7 +86,7 @@ div  p {color:green;}
 
 这张样式表最终应用到 DOM 节点的效果如下图所示：
 
-![](<../../../.gitbook/assets/image (62) (1) (1) (1).png>)
+![](<../../../.gitbook/assets/image (62) (1) (1) (1) (1).png>)
 
 从图中可以看出，所有子节点都继承了父节点样式。比如 body 节点的 font-size 属性是 20，那 body 节点下面的所有节点的 font-size 都等于 20。为了加深你对 CSS 继承的理解，你可以打开 Chrome 的“开发者工具”，选择第一个“element”标签，再选择“style”子标签，你会看到如下界面：
 

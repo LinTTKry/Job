@@ -21,3 +21,42 @@
 以上就是消息队列中宏任务的执行过程。
 
 页面的渲染事件、各种 IO 的完成事件、执行 JavaScript 脚本的事件、用户交互的事件等都随时有可能被添加到消息队列中，<mark style="color:blue;">而且添加事件是由系统操作的，JavaScript 代码不能准确掌控任务要添加到队列中的位置，控制不了任务在消息队列中的位置，所以很难控制开始执行任务的时间</mark>。
+
+```javascript
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id='demo'>
+            <ol>
+                <li>test</li>
+            </ol>
+        </div>
+    </body>
+    <script type="text/javascript">
+        function timerCallback2(){
+          console.log(2)
+        }
+        function timerCallback(){
+            console.log(1)
+            setTimeout(timerCallback2,0)
+        }
+        setTimeout(timerCallback,0)
+    </script>
+</html>
+```
+
+这段代码的目的是想通过 setTimeout 来设置两个回调任务，并让它们按照前后顺序来执行，中间也不要再插入其他的任务，因为如果这两个任务的中间插入了其他的任务，就很有可能会影响到第二个定时器的执行时间了。
+
+但实际情况是我们不能控制的，比如在你调用 setTimeout 来设置回调任务的间隙，消息队列中就有可能被插入很多系统级的任务。你可以打开 Performance 工具，来记录下这段任务的执行过程，也可参考文中我记录的图片：
+
+![](<../../.gitbook/assets/image (67).png>)
+
+setTimeout 函数触发的回调函数都是宏任务，如图中，左右两个黄色块就是 setTimeout 触发的两个定时器任务。<mark style="color:red;">**现在你可以重点观察上图中间浅红色区域，这里有很多一段一段的任务，这些是被渲染引擎插在两个定时器任务中间的任务。**</mark>试想一下，如果中间被插入的任务执行时间过久的话，那么就会影响到后面任务的执行了。所以说<mark style="color:red;">**宏任务的时间粒度比较大，执行的时间间隔是不能精确控制的，对一些高实时性的需求就不太符合了，比如后面要介绍的监听 DOM 变化的需求。**</mark>
+
+## 微任务
+
+我们介绍过异步回调的概念，其主要有两种方式。
+
+第一种是把异步回调函数封装成一个宏任务，添加到消息队列尾部，当循环系统执行到该任务的时候执行回调函数。这种比较好理解，我们前面介绍的 setTimeout 和 XMLHttpRequest 的回调函数都是通过这种方式来实现的。
+
+第二种方式的执行时机是在主函数执行结束之后、当前宏任务结束之前执行回调函数，这通常都是以微任务形式体现的。

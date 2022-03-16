@@ -13,7 +13,7 @@
 
 ## V8 是如何执行一段 JavaScript 代码的
 
-![](<../../.gitbook/assets/image (67).png>)
+![](<../../.gitbook/assets/image (67) (1).png>)
 
 ### 生成抽象语法树（AST）和执行上下文
 

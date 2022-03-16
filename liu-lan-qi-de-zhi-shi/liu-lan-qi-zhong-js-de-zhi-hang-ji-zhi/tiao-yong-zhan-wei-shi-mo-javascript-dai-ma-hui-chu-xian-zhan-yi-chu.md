@@ -17,7 +17,7 @@ function add(){
 add()
 ```
 
-![](<../../.gitbook/assets/image (58).png>)
+![](<../../.gitbook/assets/image (58) (1).png>)
 
 <mark style="color:blue;">**执行上下文准备好之后，便开始执行全局代码，当执行到 add 这儿时，JavaScript 判断这是一个函数调用，那么将执行以下操作**</mark>：
 

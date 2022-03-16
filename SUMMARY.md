@@ -129,6 +129,7 @@
   * [消息队列和事件循环：页面是怎么“活”起来的？](liu-lan-qi-de-zhi-shi/liu-lan-qi-zhong-de-ye-mian-xun-huan-xi-tong/xiao-xi-dui-lie-he-shi-jian-xun-huan-ye-mian-shi-zen-mo-huo-qi-lai-de.md)
   * [WebAPI：setTimeout是如何实现的？](liu-lan-qi-de-zhi-shi/liu-lan-qi-zhong-de-ye-mian-xun-huan-xi-tong/webapisettimeout-shi-ru-he-shi-xian-de.md)
   * [WebAPI：XMLHttpRequest是怎么实现的？](liu-lan-qi-de-zhi-shi/liu-lan-qi-zhong-de-ye-mian-xun-huan-xi-tong/webapixmlhttprequest-shi-zen-mo-shi-xian-de.md)
+  * [宏任务和微任务：不是所有任务都是一个待遇](liu-lan-qi-de-zhi-shi/liu-lan-qi-zhong-de-ye-mian-xun-huan-xi-tong/hong-ren-wu-he-wei-ren-wu-bu-shi-suo-you-ren-wu-du-shi-yi-ge-dai-yu.md)
 * [判断页面加载完毕](liu-lan-qi-de-zhi-shi/pan-duan-ye-mian-jia-zai-wan-bi.md)
 * [缓存](liu-lan-qi-de-zhi-shi/huan-cun.md)
 * [输入url发生了什么？](liu-lan-qi-de-zhi-shi/shu-ru-url-fa-sheng-le-shen-me.md)

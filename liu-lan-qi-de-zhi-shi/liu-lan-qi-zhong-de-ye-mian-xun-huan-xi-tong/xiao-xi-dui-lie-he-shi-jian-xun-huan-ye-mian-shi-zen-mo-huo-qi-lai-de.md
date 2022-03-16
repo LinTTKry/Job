@@ -95,7 +95,11 @@ Task clickTask;
 task_queue.pushTask(clickTask)
 ```
 
-由于是多个线程操作同一个消息队列，所以在添加任务和取出任务时还会加上一个同步锁，这块内容你也要注意下。
+由于是多个线程操作同一个消息队列，所以在添加任务和取出任务时还会加上一个同步锁，这块内容你也要注意下。<mark style="color:red;">**这里提到的任务是指浏览器所以需要处理的任务！**</mark>
+
+<mark style="color:red;">**浏览器是基于多进程+多线程架构的，所以多进程通讯（IPC）和多线程同步的问题！**</mark>
+
+<mark style="color:red;">**因为JavaScript引擎是运行在渲染进程的主线程上的，所以我们说JavaScript是单线程执行的！**</mark>
 
 ## 处理其他进程发送过来的任务
 

@@ -16,7 +16,7 @@
 
 ### 1. 编译阶段
 
-![](<../../.gitbook/assets/image (62) (1) (1).png>)
+![](<../../.gitbook/assets/image (62) (1) (1) (1).png>)
 
 输入一段代码，经过编译后，会生成两部分内容：<mark style="color:red;">**执行上下文（Execution context）和可执行代码**</mark>。
 

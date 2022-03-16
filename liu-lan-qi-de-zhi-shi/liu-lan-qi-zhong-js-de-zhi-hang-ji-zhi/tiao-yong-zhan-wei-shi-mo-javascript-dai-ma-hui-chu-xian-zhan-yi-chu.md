@@ -48,7 +48,7 @@ addAll(3,6)
 
 * 创建全局上下文，并将其压入栈底，执行a=2
 
-![](<../../.gitbook/assets/image (75).png>)![](<../../.gitbook/assets/image (76).png>)
+![](<../../.gitbook/assets/image (75).png>)![](<../../.gitbook/assets/image (76) (1).png>)
 
 * 调用 addAll 函数，同样会为其创建执行上下文，并执行d=10
 
@@ -61,7 +61,7 @@ addAll(3,6)
 
 * 紧接着 addAll 执行最后一个相加操作后并返回，addAll 的执行上下文也会从栈顶部弹出，此时调用栈中就只剩下全局上下文了。最终如下图所示：
 
-![](<../../.gitbook/assets/image (71).png>)
+![](<../../.gitbook/assets/image (71) (1).png>)
 
 
 

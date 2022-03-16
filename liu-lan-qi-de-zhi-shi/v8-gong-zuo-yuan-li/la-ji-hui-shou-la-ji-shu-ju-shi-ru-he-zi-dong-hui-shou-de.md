@@ -21,7 +21,7 @@ foo()
 
 接着，当 showName 函数执行完成之后，函数执行流程就进入了 foo 函数，那这时就需要销毁 showName 函数的执行上下文了。ESP 这时候就帮上忙了，JavaScript 会将 ESP 下移到 foo 函数的执行上下文，这个下移操作就是销毁 showName 函数执行上下文的过程。
 
-![](<../../.gitbook/assets/image (90).png>)
+![](<../../.gitbook/assets/image (90) (1).png>)
 
 <mark style="color:red;">**当一个函数执行结束之后，JavaScript 引擎会通过向下移动 ESP 来销毁该函数保存在栈中的执行上下文。**</mark>
 

@@ -19,7 +19,7 @@
 
 ## <mark style="color:red;">目前多进程架构</mark>
 
-​![](<../.gitbook/assets/image (62) (1) (1) (1).png>)
+​![](<../.gitbook/assets/image (62) (1) (1) (1) (1).png>)
 
 * **浏览器进程。**主要负责<mark style="color:red;">**界面显示、用户交互、子进程管理**</mark>，同时提供存储等功能。
 * **渲染进程**。核心任务是将 ** **<mark style="color:red;">**HTML、CSS 和 JavaScript 转换为用户可以与之交互的网页**</mark>，排版引擎 Blink 和 JavaScript 引擎 V8 都是运行在该进程中，默认情况下，Chrome 会为每个 Tab 标签创建一个渲染进程。出于安全考虑，<mark style="color:red;">**渲染进程都是运行在沙箱模式**</mark>下。

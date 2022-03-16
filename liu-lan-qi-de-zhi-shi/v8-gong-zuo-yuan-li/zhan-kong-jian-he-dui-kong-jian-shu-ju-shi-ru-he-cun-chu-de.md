@@ -10,7 +10,7 @@ C 编译器会把 int 型的变量悄悄转换为 bool 型的变量，我们通�
 
 <mark style="color:red;">**JavaScript 是一种弱类型的、动态的语言。**</mark>
 
-<mark style="color:red;">****</mark>![](<../../.gitbook/assets/image (68).png>)<mark style="color:red;">****</mark>
+<mark style="color:red;">****</mark>![](<../../.gitbook/assets/image (68) (1).png>)<mark style="color:red;">****</mark>
 
 第一点，使用 typeof 检测 Null 类型时，返回的是 Object。这是当初 JavaScript 语言的一个 Bug，一直保留至今，之所以一直没修改过来，主要是为了兼容老的代码。
 
@@ -44,7 +44,7 @@ JavaScript 引擎并不是直接将该对象存放到变量环境中，而是将
 
 答案是不可以的。这是因为 <mark style="color:blue;">JavaScript 引擎需要用栈来维护程序执行期间上下文的状态</mark>，<mark style="color:blue;">如果栈空间大了话，所有的数据都存放在栈空间里面，那么会影响到上下文切换的效率，</mark>进而又影响到整个程序的执行效率。
 
-![](<../../.gitbook/assets/image (63) (1).png>)
+![](<../../.gitbook/assets/image (63) (1) (1).png>)
 
 通常情况下，栈空间都不会设置太大，主要用来存放一些原始类型的小数据。而引用类型的数据占用的空间都比较大，所以这一类数据会被存放到堆中，堆空间很大，能存放很多大的数据，不过缺点是分配内存和回收内存都会占用一定的时间。
 

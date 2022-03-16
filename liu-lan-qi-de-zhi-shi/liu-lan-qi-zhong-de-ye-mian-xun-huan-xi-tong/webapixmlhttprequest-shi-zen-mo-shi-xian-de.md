@@ -22,4 +22,22 @@ doWork(callback)
 
 我们将一个匿名函数赋值给变量 callback，同时将 callback 作为参数传递给了 doWork() 函数，这时在函数 doWork() 中 callback 就是回调函数。
 
-上面的回调方法有个特点，<mark style="color:red;">就是回调函数 callback 是在主函数 doWork 返回之前执行的，我们把这个回调过程称为同步回调。</mark>
+上面的回调方法有个特点，<mark style="color:red;">**就是回调函数 callback 是在主函数 doWork 返回之前执行的，我们把这个回调过程称为同步回调。**</mark>
+
+下面我们再来看看异步回调的例子：
+
+```javascript
+let callback = function(){
+    console.log('i am do homework')
+}
+function doWork(cb) {
+    console.log('start do work')
+    setTimeout(cb,1000)   
+    console.log('end do work')
+}
+doWork(callback)
+```
+
+我们使用了 <mark style="color:red;">**setTimeout 函数让 callback 在 doWork 函数执行结束后，又延时了 1 秒再执行，这次 callback 并没有在主函数 doWork 内部被调用，我们把这种回调函数在主函数外部执行的过程称为异步回调。**</mark>
+
+消息队列和主线程循环机制保证了页面有条不紊地运行。这里还需要补充一点，那就是当循环系统在执行一个任务的时候，都要为这个任务维护一个系统调用栈。这个系统调用栈类似于 JavaScript 的调用栈，只不过系统调用栈是 Chromium 的开发语言 C++ 来维护的，其完整的调用栈信息你可以通过 chrome://tracing/ 来抓取。当然，你也可以通过 Performance 来抓取它核心的调用信息，如下图所示：

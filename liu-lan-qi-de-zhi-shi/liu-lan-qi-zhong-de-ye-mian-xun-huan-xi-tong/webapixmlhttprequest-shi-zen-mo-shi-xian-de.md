@@ -55,7 +55,7 @@ doWork(callback)
 
 ## XMLHttpRequest 运作机制
 
-![](<../../.gitbook/assets/image (92).png>)
+![](<../../.gitbook/assets/image (92) (1).png>)
 
 这是 XMLHttpRequest 的总执行流程图，下面我们就来分析从发起请求到接收数据的完整流程。
 

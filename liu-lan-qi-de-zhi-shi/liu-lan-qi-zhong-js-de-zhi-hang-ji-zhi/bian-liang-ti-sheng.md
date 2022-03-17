@@ -4,7 +4,7 @@
 
 指在 JavaScript 代码执行过程中，JavaScript 引擎把<mark style="color:red;">**变量的声明部分和函数的声明部分**</mark>提升到代码开头的“行为”。变量被提升后，会给变量设置默认值，这个默认值就是我们熟悉的 undefined。
 
-![](<../../.gitbook/assets/image (70) (1) (1).png>)![](<../../.gitbook/assets/image (67) (1) (1) (1) (1) (1).png>)
+![](<../../.gitbook/assets/image (70) (1) (1).png>)![](<../../.gitbook/assets/image (67) (1) (1) (1) (1) (1) (1).png>)
 
 ![](<../../.gitbook/assets/image (7) (1).png>)
 
@@ -12,7 +12,7 @@
 
 变量提升”意味着变量和函数的声明会在物理层面移动到代码的最前面，正如我们所模拟的那样。但，这并不准确。<mark style="color:red;">**实际上变量和函数声明在代码里的位置是不会改变的，而且是在编译阶段被 JavaScript 引擎放入内存中**</mark>。一段 JavaScript 代码在执行之前需要被 JavaScript 引擎编译，编译完成之后，才会进入执行阶段。大致流程：
 
-![](<../../.gitbook/assets/image (81) (1) (1).png>)
+![](<../../.gitbook/assets/image (81) (1) (1) (1).png>)
 
 ### 1. 编译阶段
 

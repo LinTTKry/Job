@@ -22,7 +22,7 @@ IP 是非常底层的协议，只负责把数据包传送到对方电脑，但�
 
 UDP 中一个最重要的信息是**端口号**，端口号其实就是一个**数字**，**每个想访问网络的程序都需要绑定一个端口号**。通过端口号 UDP 就能把指定的数据包发送给指定的程序了，所以 <mark style="color:blue;">**IP 通过 IP 地址信息把数据包发送给指定的电脑，而 UDP 通过端口号把数据包分发给正确的程序。**</mark>
 
-![](<../.gitbook/assets/image (65) (1) (1) (1).png>)
+![](<../.gitbook/assets/image (65) (1) (1) (1) (1).png>)
 
 * 上层将含有“极客时间”的数据包交给传输层；
 * 传输层会在数据包前面附加上 UDP 头，组成新的 UDP 数据包，再将新的 UDP 数据包交给网络层；
@@ -47,7 +47,7 @@ TCP（Transmission Control Protocol，传输控制协议）是一种<mark style=
 
 和 UDP 头一样，<mark style="color:blue;">**TCP 头除了包含了目标端口和本机端口号外，还提供了用于排序的序列号，以便接收端通过序号来重排数据包。**</mark>
 
-![](<../.gitbook/assets/image (81) (1) (1) (1).png>)
+![](<../.gitbook/assets/image (81) (1) (1) (1) (1).png>)
 
 完整的 TCP 连接过程
 

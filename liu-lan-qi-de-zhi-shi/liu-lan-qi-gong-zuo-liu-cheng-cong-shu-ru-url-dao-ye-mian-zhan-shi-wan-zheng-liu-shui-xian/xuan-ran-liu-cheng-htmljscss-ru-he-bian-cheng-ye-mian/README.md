@@ -40,7 +40,7 @@ document.getElementsByTagName("p")[0].innerText = "black"
 
 这行代码的作用是把第一个标签的内容修改为 black，具体执行结果你可以参考下图：
 
-![](<../../../.gitbook/assets/image (65) (1) (1) (1) (1) (1).png>)
+![](<../../../.gitbook/assets/image (65) (1) (1) (1) (1) (1) (1).png>)
 
 通过 JavaScript 修改 DOM从图中可以看出，在执行了一段修改第一个标签的 JavaScript 代码后，DOM 的第一个 p 节点的内容成功被修改，同时页面中的内容也被修改了。好了，现在我们已经生成 DOM 树了，但是 DOM 节点的样式我们依然不知道，要让 DOM 节点拥有正确的样式，这就需要样式计算了。
 
@@ -52,7 +52,7 @@ document.getElementsByTagName("p")[0].innerText = "black"
 
 和 HTML 文件一样，浏览器也是无法直接理解这些纯文本的 CSS 样式，所以当渲染引擎接收到 CSS 文本时，会执行一个转换操作，将 CSS 文本转换为浏览器可以理解的结构——styleSheets。为了加深理解，你可以在 Chrome 控制台中查看其结构，只需要在控制台中输入 document.styleSheets，然后就看到如下图所示的结构：
 
-![](<../../../.gitbook/assets/image (58) (1) (1) (1).png>)
+![](<../../../.gitbook/assets/image (58) (1) (1) (1) (1).png>)
 
 从图中可以看出，这个样式表包含了很多种样式，已经把那三种来源的样式都包含进去了。当然样式表的具体结构不是我们今天讨论的重点，你只需要知道渲染引擎会把获取到的 CSS 文本全部转换为 styleSheets 结构中的数据，并且该结构同时具备了查询和修改功能，这会为后面的样式操作提供基础。
 
@@ -145,7 +145,7 @@ DOM 树中所有不可见的节点都没有包含到布局树中。为了构建�
 
 出现这种裁剪情况的时候，渲染引擎会为文字部分单独创建一个层，如果出现滚动条，滚动条也会被提升为单独的层。
 
-![](<../../../.gitbook/assets/image (58) (1) (1).png>)
+![](<../../../.gitbook/assets/image (58) (1) (1) (1).png>)
 
 ### E. 图层绘制
 
@@ -171,11 +171,11 @@ DOM 树中所有不可见的节点都没有包含到布局树中。为了构建�
 
 然后合成线程会按照<mark style="color:blue;">**视口附近的图块来优先生成位图**</mark>，实际生成位图的操作是由栅格化来执行的。<mark style="color:blue;">**所谓栅格化，是指将图块转换为位图**</mark>。而图块是栅格化执行的最小单位。<mark style="color:blue;">**渲染进程维护了一个栅格化的线程池，所有的图块栅格化都是在线程池内执行的**</mark>，运行方式如下图所示：
 
-![](<../../../.gitbook/assets/image (65) (1) (1) (1) (1).png>)
+![](<../../../.gitbook/assets/image (65) (1) (1) (1) (1) (1).png>)
 
 通常，<mark style="color:blue;">**栅格化过程都会使用 GPU 来加速生成，使用 GPU 生成位图的过程叫快速栅格化**</mark>，或者 GPU 栅格化，生成的位图被保存在 GPU 内存中。GPU 操作是运行在 GPU 进程中，如果栅格化操作使用了 GPU，那么最终生成位图的操作是在 GPU 中完成的，这就涉及到了<mark style="color:blue;">**跨进程操作**</mark>。
 
-![](<../../../.gitbook/assets/image (72) (1).png>)
+![](<../../../.gitbook/assets/image (72) (1) (1).png>)
 
 从图中可以看出，<mark style="color:blue;">**渲染进程把生成图块的指令发送给 GPU，然后在 GPU 中执行生成图块的位图，并保存在 GPU 的内存中**</mark>。
 

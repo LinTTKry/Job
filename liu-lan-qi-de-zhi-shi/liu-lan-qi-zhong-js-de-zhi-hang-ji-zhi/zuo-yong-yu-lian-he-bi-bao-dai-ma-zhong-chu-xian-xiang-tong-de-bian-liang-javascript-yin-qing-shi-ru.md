@@ -24,7 +24,7 @@ bar 函数和 foo 函数的 outer 都是指向全局上下文的，这也就意�
 
 词法作用域就是指作用域是<mark style="color:red;">**由代码中函数声明的位置**</mark>来决定的，所以<mark style="color:red;">**词法作用域是静态的作用域**</mark>，通过它就能够预测代码在执行过程中如何查找标识符。
 
-![](<../../.gitbook/assets/image (82) (1).png>)
+![](<../../.gitbook/assets/image (82) (1) (1).png>)
 
 <mark style="color:blue;">**因为 JavaScript 作用域链是由词法作用域决定的，所以整个词法作用域链的顺序是：foo 函数作用域—>bar 函数作用域—>main 函数作用域—> 全局作用。**</mark>
 
@@ -53,7 +53,7 @@ let test = 1
 foo()
 ```
 
-​![](<../../.gitbook/assets/image (67) (1) (1) (1).png>)
+​![](<../../.gitbook/assets/image (67) (1) (1) (1) (1).png>)
 
 现在是执行到 bar 函数的 if 语块之内，需要打印出来变量 test，那么就需要查找到 test 变量的值，其查找过程我已经在上图中使用序号 1、2、3、4、5 标记出来了。
 
@@ -101,7 +101,7 @@ innerBar 是一个对象，包含了 getName 和 setName 的两个方法（通�
 
 当执行到 bar.setName 方法中的myName = "极客邦"这句代码时，JavaScript 引擎会沿着“当前执行上下文–>foo 函数闭包–> 全局执行上下文”的顺序来查找 myName 变量，调用栈状态图：
 
-![](<../../.gitbook/assets/image (81).png>)
+![](<../../.gitbook/assets/image (81) (1).png>)
 
 setName 的执行上下文中没有 myName 变量，foo 函数的闭包中包含了变量 myName，所以调用 setName 时，会修改 foo 闭包中的 myName 变量的值。同样的流程，当调用 bar.getName 的时候，所访问的变量 myName 也是位于 foo 函数闭包中的。
 

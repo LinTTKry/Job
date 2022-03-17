@@ -4,7 +4,7 @@
 
 JavaScript 的异步编程模型，相对于页面来说，主线程就是它整个的世界，所以在执行一项耗时的任务时，比如下载网络文件任务、获取摄像头等设备信息任务，这些任务都会放到页面主线程之外的进程或者线程中去执行，这样就避免了耗时任务“霸占”页面主线程的情况，可以结合下图来看看这个处理过程：
 
-![](<../../.gitbook/assets/image (80).png>)
+![](<../.gitbook/assets/image (80).png>)
 
 上图展示的是一个标准的异步编程模型，<mark style="color:red;">**页面主线程发起了一个耗时的任务，并将任务交给另外一个进程去处理，这时页面主线程会继续执行消息队列中的任务。等该进程处理完这个任务后，会将该任务添加到渲染进程的消息队列中，并排队等待循环系统的处理。排队结束之后，循环系统会取出消息队列中的任务进行处理，并触发相关的回调操作。**</mark>
 
@@ -43,7 +43,7 @@ xhr.send();
 
 由于我们重点关注的是输入内容（请求信息）和输出内容（回复信息），至于中间的异步请求过程，我们不想在代码里面体现太多，因为这会干扰核心的代码逻辑。整体思路如下图所示：
 
-![](<../../.gitbook/assets/image (66).png>)
+![](<../.gitbook/assets/image (66).png>)
 
 图中你可以看到，我们将 XMLHttpRequest 请求过程的代码封装起来了，重点关注输入数据和输出结果。那我们就按照这个思路来改造代码。首先，我们把输入的 HTTP 请求信息全部保存到一个 request 的结构中，包括请求地址、请求头、请求方式、引用地址、同步请求还是异步请求、安全设置等信息。request 结构如下所示：
 
@@ -206,7 +206,7 @@ x1.then(onResolve)
 
 其次，需要将回调函数 onResolve 的返回值穿透到最外层。因为我们会根据 onResolve 函数的传入值来决定创建什么类型的 Promise 任务，创建好的 Promise 对象需要返回到最外层，这样就可以摆脱嵌套循环了。
 
-![](<../../.gitbook/assets/image (57).png>)
+![](<../.gitbook/assets/image (57).png>)
 
 现在我们知道了 Promise 通过回调函数延迟绑定和回调函数返回值穿透的技术，解决了循环嵌套。之所以<mark style="color:blue;">**可以使用最后一个对象来捕获所有异常，是**</mark><mark style="color:red;">**因为 Promise 对象的错误具有“冒泡”性质，会一直向后传递，**</mark><mark style="color:blue;">**直到被 onReject 函数处理或 catch 语句捕获为止。具备了这样“冒泡”的特性后，就不需要在每个 Promise 对象中单独捕获异常了。**</mark>
 
@@ -288,4 +288,10 @@ function resolve(value) {
 
 由于promise采用.then延时绑定回调机制，而new Promise时又需要直接执行promise中的方法，即发生了先执行方法后添加回调的过程，此时需等待then方法绑定两个回调。后才能继续执行方法回调，便可将回调添加到当前js调用栈中执行结束后的任务队列中，由于宏任务较多容易堵塞，则采用了微任务。
 
-## 问题2：Promise 中是如何实现回调函数返回值穿透的？
+## <mark style="color:red;">问题2：Promise 中是如何实现回调函数返回值穿透的？</mark>
+
+首先Promise的执行结果保存在promise的data变量中，然后是.then方法返回值为使用resolved或rejected回调方法新建的一个promise对象，即例如成功则返回new Promise（resolved），将前一个promise的data值赋给新建的promise
+
+## <mark style="color:red;">问题3：Promise 出错后，是怎么通过“冒泡”传递给最后那个捕获？</mark>
+
+promise内部有resolved\_和rejected\_变量保存成功和失败的回调，进入.then（resolved，rejected）时会判断rejected参数是否为函数，若是函数，错误时使用rejected处理错误；若不是，则错误时直接throw错误，一直传递到最后的捕获，若最后没有被捕获，则会报错。可通过监听unhandledrejection事件捕获未处理的promise错误。

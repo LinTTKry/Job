@@ -16,7 +16,7 @@ var myName = "极客时间"
 foo()
 ```
 
-上面那段代码<mark style="color:blue;">**在查找 myName 变量时，如果在当前的变量环境中没有查找到，那么 JavaScript 引擎会继续在 outer 所指向的执行上下文中查找**</mark>。为了直观理解，你可以看下面这张图：![](<../../.gitbook/assets/image (85) (1).png>)
+上面那段代码<mark style="color:blue;">**在查找 myName 变量时，如果在当前的变量环境中没有查找到，那么 JavaScript 引擎会继续在 outer 所指向的执行上下文中查找**</mark>。为了直观理解，你可以看下面这张图：![](<../../.gitbook/assets/image (85) (1) (1).png>)
 
 bar 函数和 foo 函数的 outer 都是指向全局上下文的，这也就意味着如果在 bar 函数或者 foo 函数中使用了外部变量，那么 JavaScript 引擎会去全局执行上下文中查找。我们把这个查找的链条就称为作用域链。（<mark style="color:red;">**为什么bar的outer指向的是全局？因为词法作用域**</mark>）
 
@@ -53,7 +53,7 @@ let test = 1
 foo()
 ```
 
-​![](<../../.gitbook/assets/image (67) (1) (1).png>)
+​![](<../../.gitbook/assets/image (67) (1) (1) (1).png>)
 
 现在是执行到 bar 函数的 if 语块之内，需要打印出来变量 test，那么就需要查找到 test 变量的值，其查找过程我已经在上图中使用序号 1、2、3、4、5 标记出来了。
 
@@ -91,7 +91,7 @@ innerBar 是一个对象，包含了 getName 和 setName 的两个方法（通�
 
 <mark style="color:blue;">**根据词法作用域的规则，内部函数 getName 和 setName 总是可以访问它们的外部函数 foo 中的变量**</mark><mark style="color:blue;">，</mark><mark style="color:blue;">**所以当 innerBar 对象返回给全局变量 bar 时，虽然 foo 函数已经执行结束，但是 getName 和 setName 函数依然可以使用 foo 函数中的变量 myName 和 test1**</mark>。所以当 foo 函数执行完成之后，其整个调用栈的状态如下图所示：
 
-![](<../../.gitbook/assets/image (66) (1).png>)
+![](<../../.gitbook/assets/image (66) (1) (1).png>)
 
 从上图可以看出，foo 函数执行完成之后，其执行上下文从栈顶弹出了，但是由于返回的 setName 和 getName 方法中使用了 foo 函数内部的变量 myName 和 test1，所以这两个变量依然保存在内存中。这像极了 setName 和 getName 方法背的一个专属背包，无论在哪里调用了 setName 和 getName 方法，它们都会背着这个 foo 函数的专属背包。
 

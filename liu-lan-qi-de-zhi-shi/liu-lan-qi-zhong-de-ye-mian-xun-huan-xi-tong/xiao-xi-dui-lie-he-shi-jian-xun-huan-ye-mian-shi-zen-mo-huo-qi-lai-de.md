@@ -11,7 +11,7 @@
 
 现在要在一个线程中去执行这些任务，
 
-![](<../../.gitbook/assets/image (84).png>)​
+![](<../../.gitbook/assets/image (84) (1).png>)​
 
 ## 在线程运行过程中处理新任务
 
@@ -41,7 +41,7 @@ void MainThread(){
 
 通过引入事件循环机制，就可以让该线程“活”起来了，我们每次输入两个数字，都会打印出两数字相加的结果，你可以结合下图来参考下这个改进版的线程：
 
-![](<../../.gitbook/assets/image (68).png>)
+![](<../../.gitbook/assets/image (68) (1).png>)
 
 ## 处理其他线程发送过来的任务
 
@@ -155,7 +155,7 @@ void MainThread(){
 
 因为所有的任务都是在单线程中执行的，所以每次只能执行一个任务，而其他任务就都处于等待状态。如果其中一个任务执行时间过久，那么下一个任务就要等待很长时间。可以参考下图：
 
-![](<../../.gitbook/assets/image (80) (1).png>)
+![](<../../.gitbook/assets/image (80) (1) (1).png>)
 
 如果在执行动画过程中，<mark style="color:blue;">**其中有个 JavaScript 任务因执行时间过久，占用了动画单帧的时间，这样会给用户制造了卡顿的感觉，这当然是极不好的用户体验。针对这种情况，JavaScript 可以通过回调功能来规避这种问题，也就是让要执行的 JavaScript 任务滞后执行**</mark>。至于浏览器是如何实现回调功能的，我们在后面的章节中再详细介绍。
 
@@ -163,6 +163,6 @@ void MainThread(){
 
 你可以打开开发者工具，点击“Performance”标签，选择左上角的“start porfiling and load page”来记录整个页面加载过程中的事件执行情况，如下图所示：
 
-![](<../../.gitbook/assets/image (57).png>)
+![](<../../.gitbook/assets/image (57) (1).png>)
 
 从图中可以看出，我们点击展开了 Main 这个项目，其记录了主线程执行过程中的所有任务。图中灰色的就是一个个任务，每个任务下面还有子任务，其中的 <mark style="color:red;">**Parse HTML 任务，是把 HTML 解析为 DOM 的任务。值得注意的是，在执行 Parse HTML 的时候，如果遇到 JavaScript 脚本，那么会暂停当前的 HTML 解析而去执行 JavaScript 脚本**</mark>。

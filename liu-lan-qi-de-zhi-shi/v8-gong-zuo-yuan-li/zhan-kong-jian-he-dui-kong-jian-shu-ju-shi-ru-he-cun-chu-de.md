@@ -10,7 +10,7 @@ C 编译器会把 int 型的变量悄悄转换为 bool 型的变量，我们通�
 
 <mark style="color:red;">**JavaScript 是一种弱类型的、动态的语言。**</mark>
 
-<mark style="color:red;">****</mark>![](<../../.gitbook/assets/image (68) (1).png>)<mark style="color:red;">****</mark>
+<mark style="color:red;">****</mark>![](<../../.gitbook/assets/image (68) (1) (1).png>)<mark style="color:red;">****</mark>
 
 第一点，使用 typeof 检测 Null 类型时，返回的是 Object。这是当初 JavaScript 语言的一个 Bug，一直保留至今，之所以一直没修改过来，主要是为了兼容老的代码。
 
@@ -36,7 +36,7 @@ function foo(){
 foo()
 ```
 
-![](<../../.gitbook/assets/image (79).png>)
+![](<../../.gitbook/assets/image (79) (1).png>)
 
 JavaScript 引擎并不是直接将该对象存放到变量环境中，而是将它分配到堆空间里面，<mark style="color:blue;">**分配后该对象会有一个在“堆”中的地址，然后再将该数据的地址写进 c 的变量值。**</mark><mark style="color:red;">**原始类型的数据值都是直接保存在“栈”中的，引用类型的值是存放在“堆”中的。**</mark>
 
@@ -83,7 +83,7 @@ console.log(bar.getName())
 * <mark style="color:red;">**接着继续扫描到 getName 方法时，发现该函数内部还引用变量 test1，于是 JavaScript 引擎又将 test1 添加到“closure(foo)”对象中。这时候堆中的“closure(foo)”对象中就包含了 myName 和 test1 两个变量了。**</mark>
 * 由于 test2 并没有被内部函数引用，所以 test2 依然保存在调用栈中。
 
-![](<../../.gitbook/assets/image (66).png>)
+![](<../../.gitbook/assets/image (66) (1).png>)
 
 从上图你可以清晰地看出，<mark style="color:red;">**当执行到 foo 函数时，闭包就产生了；当 foo 函数执行结束之后，返回的 getName 和 setName 方法都引用“closure(foo)”对象，所以即使 foo 函数退出了，“ closure(foo)”依然被其内部的 getName 和 setName 方法引用**</mark>。所以在下次调用bar.setName或者bar.getName时，创建的执行上下文中就包含了“closure(foo)”。
 

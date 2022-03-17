@@ -8,7 +8,7 @@
 
 数据包要在互联网上进行传输，就要符合网际协议（Internet Protocol，简称 IP）标准。
 
-![](<../.gitbook/assets/image (57) (1) (1).png>)
+![](<../.gitbook/assets/image (57) (1) (1) (1).png>)
 
 * 上层将含有“极客时间”的数据包交给网络层；
 * 网络层再将 <mark style="color:blue;">**IP 头（主机A与主机B的IP地址）附**</mark>加到数据包上，组成新的 IP 数据包，并交给底层；

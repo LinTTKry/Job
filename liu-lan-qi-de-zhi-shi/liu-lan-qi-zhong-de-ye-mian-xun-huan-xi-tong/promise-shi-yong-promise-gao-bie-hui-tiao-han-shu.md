@@ -4,7 +4,7 @@
 
 JavaScript 的异步编程模型，相对于页面来说，主线程就是它整个的世界，所以在执行一项耗时的任务时，比如下载网络文件任务、获取摄像头等设备信息任务，这些任务都会放到页面主线程之外的进程或者线程中去执行，这样就避免了耗时任务“霸占”页面主线程的情况，可以结合下图来看看这个处理过程：
 
-![](<../.gitbook/assets/image (80).png>)
+![](<../../.gitbook/assets/image (80).png>)
 
 上图展示的是一个标准的异步编程模型，<mark style="color:red;">**页面主线程发起了一个耗时的任务，并将任务交给另外一个进程去处理，这时页面主线程会继续执行消息队列中的任务。等该进程处理完这个任务后，会将该任务添加到渲染进程的消息队列中，并排队等待循环系统的处理。排队结束之后，循环系统会取出消息队列中的任务进行处理，并触发相关的回调操作。**</mark>
 
@@ -43,7 +43,7 @@ xhr.send();
 
 由于我们重点关注的是输入内容（请求信息）和输出内容（回复信息），至于中间的异步请求过程，我们不想在代码里面体现太多，因为这会干扰核心的代码逻辑。整体思路如下图所示：
 
-![](<../.gitbook/assets/image (66).png>)
+![](<../../.gitbook/assets/image (66).png>)
 
 图中你可以看到，我们将 XMLHttpRequest 请求过程的代码封装起来了，重点关注输入数据和输出结果。那我们就按照这个思路来改造代码。首先，我们把输入的 HTTP 请求信息全部保存到一个 request 的结构中，包括请求地址、请求头、请求方式、引用地址、同步请求还是异步请求、安全设置等信息。request 结构如下所示：
 
@@ -206,7 +206,7 @@ x1.then(onResolve)
 
 其次，需要将回调函数 onResolve 的返回值穿透到最外层。因为我们会根据 onResolve 函数的传入值来决定创建什么类型的 Promise 任务，创建好的 Promise 对象需要返回到最外层，这样就可以摆脱嵌套循环了。
 
-![](<../.gitbook/assets/image (57).png>)
+![](<../../.gitbook/assets/image (57).png>)
 
 现在我们知道了 Promise 通过回调函数延迟绑定和回调函数返回值穿透的技术，解决了循环嵌套。之所以<mark style="color:blue;">**可以使用最后一个对象来捕获所有异常，是**</mark><mark style="color:red;">**因为 Promise 对象的错误具有“冒泡”性质，会一直向后传递，**</mark><mark style="color:blue;">**直到被 onReject 函数处理或 catch 语句捕获为止。具备了这样“冒泡”的特性后，就不需要在每个 Promise 对象中单独捕获异常了。**</mark>
 
@@ -225,3 +225,67 @@ demo.then(onResolve)
 ```
 
 通过模拟源码查看背后的执行顺序：
+
+```javascript
+function Bromise(executor) {
+    var onResolve_ = null
+    var onReject_ = null
+     //模拟实现resolve和then，暂不支持rejcet
+    this.then = function (onResolve, onReject) {
+        onResolve_ = onResolve
+    };
+    function resolve(value) {
+          //setTimeout(()=>{
+            onResolve_(value)
+           // },0)
+    }
+    executor(resolve, null);
+}
+```
+
+观察上面这段代码，我们实现了自己的构造函数、resolve、then 方法。接下来我们使用 Bromise 来实现我们的业务代码，实现后的代码如下所示：
+
+```javascript
+function executor(resolve, reject) {
+    resolve(100)
+}
+//将Promise改成我们自己的Bromsie
+let demo = new Bromise(executor)
+
+function onResolve(value){
+    console.log(value)
+}
+demo.then(onResolve)
+```
+
+执行这段代码，我们发现执行出错，输出的内容是：
+
+```javascript
+Uncaught TypeError: onResolve_ is not a function
+    at resolve (<anonymous>:10:13)
+    at executor (<anonymous>:17:5)
+    at new Bromise (<anonymous>:13:5)
+    at <anonymous>:19:12
+```
+
+之所以出现这个错误，是由于 Bromise 的延迟绑定导致的，<mark style="color:red;">**在调用到 onResolve\_ 函数的时候，Bromise.then 还没有执行，所以执行上述代码的时候，当然会报“onResolve\_ is not a function**</mark>**“**的错误了。
+
+正是因为此，我们要改造 Bromise 中的 resolve 方法，让 resolve 延迟调用 onResolve\_。
+
+<mark style="color:red;">**要让 resolve 中的 onResolve\_ 函数延后执行，可以在 resolve 函数里面加上一个定时器，让其延时执行 onResolve\_ 函数**</mark>，你可以参考下面改造后的代码：
+
+```javascript
+function resolve(value) {
+          setTimeout(()=>{
+              onResolve_(value)
+            },0)
+    }
+```
+
+<mark style="color:red;"><mark style="background-color:orange;">**上面采用了定时器来推迟 onResolve 的执行，不过使用定时器的效率并不是太高，好在我们有微任务，所以 Promise 又把这个定时器改造成了微任务了，这样既可以让 onResolve\_ 延时被调用，又提升了代码的执行效率。这就是 Promise 中使用微任务的原由了**<mark style="background-color:orange;"></mark><mark style="color:red;">。</mark>
+
+## <mark style="color:red;">问题1：Promise 中为什么要引入微任务？</mark>
+
+由于promise采用.then延时绑定回调机制，而new Promise时又需要直接执行promise中的方法，即发生了先执行方法后添加回调的过程，此时需等待then方法绑定两个回调。后才能继续执行方法回调，便可将回调添加到当前js调用栈中执行结束后的任务队列中，由于宏任务较多容易堵塞，则采用了微任务。
+
+## 问题2：Promise 中是如何实现回调函数返回值穿透的？

@@ -80,7 +80,7 @@ console.log('main 4')
 
 为了让你更好地理解协程是怎么执行的，我结合上面那段代码的执行过程，画出了下面的“协程执行流程图”:
 
-​![](<../../.gitbook/assets/image (65).png>)
+​![](<../../.gitbook/assets/image (83).png>)
 
 从图中可以看出来协程的四点规则：
 
@@ -98,7 +98,7 @@ console.log('main 4')
 
 为了直观理解父协程和 gen 协程是如何切换调用栈的：
 
-![](<../../.gitbook/assets/image (58).png>)
+![](<../../.gitbook/assets/image (63).png>)
 
 其实在 JavaScript 中，生成器就是协程的一种实现方式，这样相信你也就理解什么是生成器了。那么接下来，我们使用生成器和 Promise 来改造开头的那段 Promise 代码。
 
@@ -181,7 +181,7 @@ foo()
 console.log(3)
 ```
 
-![](<../../.gitbook/assets/image (93).png>)
+![](<../../.gitbook/assets/image (215).png>)
 
 结合上图，我们来一起分析下 async/await 的执行流程。
 

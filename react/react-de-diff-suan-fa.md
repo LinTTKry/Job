@@ -18,7 +18,7 @@ description: react却利用其特殊的diff算法做到了O(n^3)到O(n)的飞跃
 
 1）web中DOM跨层级的移动操作比较小，可以忽略不计；
 
-2 )  拥有相同类的两个组件将会生成相似的属性结构；
+2 ) 拥有相同类的两个组件将会生成相似的属性结构；
 
 3）对于同一层级的一组子节点，它们可以通过唯一id进行区分；
 
@@ -38,7 +38,7 @@ description: react却利用其特殊的diff算法做到了O(n^3)到O(n)的飞跃
 
 情节一： **新旧集合中存在相同节点但位置不同时，如何移动节点**
 
-![](<../.gitbook/assets/image (16).png>)
+![](<../.gitbook/assets/image (15).png>)
 
 | index | 节点 | oldIndex | maxIndex | 操作                                                           |
 | ----- | -- | -------- | -------- | ------------------------------------------------------------ |
@@ -58,8 +58,6 @@ description: react却利用其特殊的diff算法做到了O(n^3)到O(n)的飞跃
 * 当oldIndex\<maxIndex时，将当前节点移动到index的位置
 
 情形二：新集合中有新加入的节点，旧集合中有删除的节点
-
-
 
 ![](../.gitbook/assets/5518628-eb7ef5477ea1a678.webp)
 
@@ -86,9 +84,8 @@ description: react却利用其特殊的diff算法做到了O(n^3)到O(n)的飞跃
 
 **diff的不足与待优化的地方**
 
-****![](https://upload-images.jianshu.io/upload\_images/5518628-aea2bb7e8e843db6.png?imageMogr2/auto-orient/strip|imageView2/2/w/636/format/webp)
+\*\*\*\*![](https://upload-images.jianshu.io/upload\_images/5518628-aea2bb7e8e843db6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/636/format/webp)
 
 看图的 D，此时D不移动，但它的index是最大的，导致更新lastIndex=3，从而使得其他元素A,B,C的index\<lastIndex，导致A,B,C都要去移动。
 
 **理想情况是只移动D，不移动A,B,C。因此，在开发过程中，尽量减少类似将最后一个节点移动到列表首部的操作，当节点数量过大或更新操作过于频繁时，会影响React的渲染性能。**
-

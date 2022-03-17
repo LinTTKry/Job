@@ -2,7 +2,7 @@
 
 ## ​JavaScript 中的 this 是什么
 
-​![](<../../.gitbook/assets/image (79) (1) (1).png>)
+​![](<../../.gitbook/assets/image (160).png>)
 
 <mark style="color:red;">**this 是和执行上下文绑定的**</mark>**。**<mark style="color:blue;">**执行上下文主要分为三种——全局执行上下文、函数执行上下文和 eval 执行上下文，所以对应的 this 也只有这三种——全局执行上下文中的 this、函数中的 this 和 eval 中的 this。**</mark>
 

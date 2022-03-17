@@ -49,7 +49,7 @@
 
 但实际情况是我们不能控制的，比如在你调用 setTimeout 来设置回调任务的间隙，消息队列中就有可能被插入很多系统级的任务。你可以打开 Performance 工具，来记录下这段任务的执行过程，也可参考文中我记录的图片：
 
-![](<../../.gitbook/assets/image (67) (1) (1).png>)
+![](<../../.gitbook/assets/image (109).png>)
 
 setTimeout 函数触发的回调函数都是宏任务，如图中，左右两个黄色块就是 setTimeout 触发的两个定时器任务。<mark style="color:red;">**现在你可以重点观察上图中间浅红色区域，这里有很多一段一段的任务，这些是被渲染引擎插在两个定时器任务中间的任务。**</mark>试想一下，如果中间被插入的任务执行时间过久的话，那么就会影响到后面任务的执行了。所以说<mark style="color:red;">**宏任务的时间粒度比较大，执行的时间间隔是不能精确控制的，对一些高实时性的需求就不太符合了，比如后面要介绍的监听 DOM 变化的需求。**</mark>
 
@@ -83,9 +83,9 @@ setTimeout 函数触发的回调函数都是宏任务，如图中，左右两个
 
 如果在执行微任务的过程中，产生了新的微任务，同样会将该微任务添加到微任务队列中，V8 引擎一直循环执行微任务队列中的任务，直到队列为空才算执行结束。也就是说<mark style="color:red;">**在执行微任务过程中产生的新的微任务并不会推迟到下个宏任务中执行，而是在当前的宏任务中继续执行。**</mark>
 
-<mark style="color:red;">****</mark>![](<../../.gitbook/assets/image (65) (1).png>)<mark style="color:red;">****</mark>
+<mark style="color:red;">****</mark>![](<../../.gitbook/assets/image (84).png>)<mark style="color:red;">****</mark>
 
-<mark style="color:red;">****</mark>![](<../../.gitbook/assets/image (89).png>)<mark style="color:red;">****</mark>
+<mark style="color:red;">****</mark>![](<../../.gitbook/assets/image (199).png>)<mark style="color:red;">****</mark>
 
 该<mark style="color:red;">**示意图是在执行一个 ParseHTML 的宏任务，在执行过程中，遇到了 JavaScript 脚本，那么就暂停解析流程，进入到 JavaScript 的执行环境。从图中可以看到，全局上下文中包含了微任务列表**</mark>。
 

@@ -10,7 +10,7 @@ description: https://yuchengkai.cn/react/
 
 计算树的哪些部分已经更改
 
-&#x20;diff算法是**调和的具体实现。**
+diff算法是**调和的具体实现。**
 
 ## 什么叫render?
 
@@ -36,8 +36,6 @@ React 的组件更新过程简而言之就是在持续调用函数的一个过�
 ### 1：fiber----拆分任务的最小颗粒度，可以认为是一个工作单元，执行更新任务的整个流程（不包括渲染）就是在反复寻找工作单元并运行它们
 
 fiber 内部其实存储了很多上下文信息，我们可以把它认为是改进版的虚拟 DOM，它同样也对应了组件实例及 DOM 元素。同时 fiber 也会组成 fiber tree，但是它的结构不再是一个树形，而是一个链表的结构。
-
-
 
 [![](https://camo.githubusercontent.com/64a54d5f2779f4ffdf8117790a91f643e3aa106ce978acd9d80c424edf25dadd/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f372f32312f313663313465613231326535383536363f773d33343526683d33393226663d706e6726733d3532313235)](https://camo.githubusercontent.com/64a54d5f2779f4ffdf8117790a91f643e3aa106ce978acd9d80c424edf25dadd/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f372f32312f313663313465613231326535383536363f773d33343526683d33393226663d706e6726733d3532313235)
 
@@ -88,7 +86,7 @@ fiber 内部其实存储了很多上下文信息，我们可以把它认为是�
 
 就是通过定时器的方式，来获取每一帧的结束时间。得到每一帧的结束时间以后我们就能判断当下距离结束时间的一个差值。如果还未到结束时间，那么也就意味着我可以继续执行更新任务；如果已经过了结束时间，那么就意味着当前帧已经没有时间给我执行任务了，必须把执行权交还给浏览器，也就是打断任务的执行。另外当开始执行更新任务（也就是寻找工作单元并执行的过程）时，如果有新的更新任务进来，那么调度器就会按照两者的优先级大小来进行决策。如果新的任务优先级小，那么当然继续当下的任务；如果新的任务优先级大，那么会打断任务并开始新的任务
 
-![](broken-reference)
+![](https://github.com/LinTTKry/Job/blob/interview/react/broken-reference)
 
 #### 调度的具体实现：
 
@@ -120,9 +118,9 @@ var IdlePriority = 5;
 
 在上图中我们也可以发现，该回调方法是在渲染以后才执行的。
 
-&#x20;因为`requestIdleCallback`不是哪个浏览器都兼容，为了照顾大多数浏览器实现 `requestIdleCallback` 函数的核心只有一点，**如何多次在浏览器空闲时且是渲染后才调用回调方法？**
+因为`requestIdleCallback`不是哪个浏览器都兼容，为了照顾大多数浏览器实现 `requestIdleCallback` 函数的核心只有一点，**如何多次在浏览器空闲时且是渲染后才调用回调方法？**
 
-&#x20;说到多次执行，那么肯定得使用定时器了。在多种定时器中，唯有 `requestAnimationFrame` 具备一定的精确度，因此 `requestAnimationFrame` 就是当下实现 `requestIdleCallback` 的一个步骤。`requestAnimationFrame` 的回调方法会在每次重绘前执行，另外它还存在一个瑕疵：页面处于后台时该回调函数不会执行，因此我们需要对于这种情况做个补救措施
+说到多次执行，那么肯定得使用定时器了。在多种定时器中，唯有 `requestAnimationFrame` 具备一定的精确度，因此 `requestAnimationFrame` 就是当下实现 `requestIdleCallback` 的一个步骤。`requestAnimationFrame` 的回调方法会在每次重绘前执行，另外它还存在一个瑕疵：页面处于后台时该回调函数不会执行，因此我们需要对于这种情况做个补救措施
 
 ```
 rAFID = requestAnimationFrame(function(timestamp) {
@@ -179,4 +177,3 @@ if (
 但是生成一个宏任务有很多种方式并且各自也有优先级，那么为了最快地执行任务，我们肯定得选择优先级高的方式。在这里我们选择了 `MessageChannel` 来完成这个任务，不选择 `setImmediate` 的原因是因为兼容性太差。
 
 到这里为止，`requestAnimationFrame` + 计算帧时间及下一帧时间 + `MessageChannel` 就是我们实现 `requestIdleCallback` 的三个关键点了。
-
